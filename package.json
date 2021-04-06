@@ -22,6 +22,10 @@
   "keywords": [
     "node-red-contrib-contribgen",
     "node-red",
+    "exchangerate",
+    "exchange rate",
+    "환율",
+    "exchange",
     "exchangeratesapi"
   ],
   "dependencies": {
