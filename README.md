@@ -20,7 +20,7 @@ command in your Node-RED user directory, typically `~/.node-red`
 ## Sample parameters
 ```js
 msg.params = {};
-// msg.params.base = 'EUR';
+// msg.params.base = 'EUR'; // error on other base currency, just work on EUR 
 msg.params.symbols = 'KRW';
 return msg;
 
