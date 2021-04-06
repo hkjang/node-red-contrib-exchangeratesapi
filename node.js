@@ -9,9 +9,14 @@ module.exports = function (RED) {
         }
         var node = this;
         this.name = n.name;
-
+        node.options = {};
+        node.options.params = {};
         for (var key in n) {
-            node[key] = n[key] || "";
+            if (key !== 'x' && key !== 'y' && key !== 'z' && key !== 'creds' && key !== 'id'&& key !== 'type' && key !== 'wires' && key !== 'name'
+                && n[key] !== ''&& typeof n[key] !== 'undefined') {
+                node.options.params[key] = n[key] || "";
+                node[key] = n[key] || "";
+            }
         }
         this.on('input', function (msg) {
             for (var i in msg) {
@@ -20,22 +25,15 @@ module.exports = function (RED) {
                 }
             }
             if(node.params){
-                node.options = {};
                 node.options.params = node.params;
             }
-            if(node.options){
-                if(node.options.params){
-                    node.options.params.access_key = node.access_key;
-                }else{
-                    node.options.params.access_key = node.access_key;
-                }
+            if(node.options.params){
+                node.options.params.access_key = node.access_key;
             }else{
-                node.options = {};
-                node.options.params = {};
                 node.options.params.access_key = node.access_key;
             }
 
-            axios.get('https://api.exchangeratesapi.io/v1/' + node.url, node.options)
+            axios.get('http://api.exchangeratesapi.io/v1/' + node.url, node.options)
                 .then(function (response){
                     msg.payload = response.data;
                     node.send(msg);
