@@ -1,0 +1,98 @@
+<script type="text/html" data-template-name="exchangeratesapi">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span
+                data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-creds"> <i class="fa fa-key fa-fw"></i> API key</span></label>
+        <input type="text" id="node-input-creds">
+    </div>
+    <div class="form-row"><label for="node-input-url"><i class="fa fa-url"></i> url</label> <input type="text"
+                                                                                                   id="node-input-url"
+                                                                                                   placeholder="url">
+    </div>
+    <div class="form-row"><label for="node-input-base"><i class="fa"></i> base</label> <input type="text"
+                                                                                                   id="node-input-base"
+                                                                                                   placeholder="base">
+    </div>
+    <div class="form-row"><label for="node-input-symbols"><i class="fa"></i> symbols</label> <input type="text"
+                                                                                                   id="node-input-symbols"
+                                                                                                   placeholder="symbols">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="exchangeratesapi">
+    <p>Summary of the node.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">object</span></dt>
+        <dd>Explanation of payload.</dd>
+        <dt class="optional">topic <span class="property-type">string</span></dt>
+        <dd>Explanation of topic.</dd>
+    </dl>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload<span class="property-type">object</span></dt>
+        <dd>Explanation of payload.</dd>
+        <dt class="optional">topic<span class="property-type">string</span></dt>
+        <dd>Explanation of topic.</dd>
+    </dl>
+    <h3>Details</h3>
+    <p>Explanation of the details.</p>
+    <p><b>Note</b>: Note of the node.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('exchangeratesapi', {
+        color: '#ffffff',
+        category: 'function',
+        defaults: {
+            name: {value: ''},
+            url: {value: "", required: false},
+            base: {value: "", required: false},
+            symbols: {value: "", required: false},
+            creds: {
+                value: "",
+                type: "exchangerates-key"
+            },
+        },
+        inputs: 1,
+        outputs: 1,
+        label: function () {
+            return this.name || 'Exchange Rates API"';
+        },
+        icon: 'icon.png',
+        align: 'left'
+    });
+</script>
+
+
+
+<script type="text/x-red" data-template-name="exchangerates-key">
+    <div class="form-row">
+        <label for="node-input-name"> <i class="fa fa-tag fa-fw"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+      <label for="node-config-input-apikey"> API Key</label>
+      <input type="text" id="node-config-input-apikey" placeholder="API Key">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('exchangerates-key', {
+        category: 'config',
+        defaults: {
+            name: {value:""}
+        },
+        credentials: {
+            apikey: {}
+        },
+        label: function () {
+            return this.name || 'API Key';
+        }
+    });
+</script>
+
