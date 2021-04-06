@@ -5,7 +5,7 @@
         <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
     </div>
     <div class="form-row">
-        <label for="node-input-creds"> <i class="fa fa-key fa-fw"></i> API key</span></label>
+        <label for="node-input-creds"> <i class="fa fa-key fa-fw"></i> Access Key</span></label>
         <input type="text" id="node-input-creds">
     </div>
     <div class="form-row"><label for="node-input-url"><i class="fa fa-url"></i> url</label> <input type="text"
@@ -60,7 +60,7 @@
         inputs: 1,
         outputs: 1,
         label: function () {
-            return this.name || 'Exchange Rates API"';
+            return this.name || 'Exchange Rates API';
         },
         icon: 'icon.png',
         align: 'left'
@@ -76,8 +76,8 @@
     </div>
 
     <div class="form-row">
-      <label for="node-config-input-apikey"> API Key</label>
-      <input type="text" id="node-config-input-apikey" placeholder="API Key">
+      <label for="node-config-input-access_key"> Access Key</label>
+      <input type="text" id="node-config-input-access_key" placeholder="Access Key">
     </div>
 </script>
 
@@ -88,10 +88,10 @@
             name: {value:""}
         },
         credentials: {
-            apikey: {}
+            access_key: {}
         },
         label: function () {
-            return this.name || 'API Key';
+            return this.name || 'Access Key';
         }
     });
 </script>

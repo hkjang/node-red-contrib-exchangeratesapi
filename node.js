@@ -3,9 +3,9 @@ module.exports = function (RED) {
     function FunctionNode(n) {
         RED.nodes.createNode(this, n);
         if (RED.nodes.getNode(n.creds)){
-            this.apikey = RED.nodes.getNode(n.creds).credentials.apikey;
+            this.access_key = RED.nodes.getNode(n.creds).credentials.access_key;
         } else {
-            this.apikey = "";
+            this.access_key = "";
         }
         var node = this;
         this.name = n.name;
@@ -25,14 +25,14 @@ module.exports = function (RED) {
             }
             if(node.options){
                 if(node.options.params){
-                    node.options.params.apikey = node.apikey;
+                    node.options.params.access_key = node.access_key;
                 }else{
-                    node.options.params.apikey = node.apikey;
+                    node.options.params.access_key = node.access_key;
                 }
             }else{
                 node.options = {};
                 node.options.params = {};
-                node.options.params.apikey = node.apikey;
+                node.options.params.access_key = node.access_key;
             }
 
             axios.get('https://api.exchangeratesapi.io/v1/' + node.url, node.options)
@@ -48,18 +48,18 @@ module.exports = function (RED) {
 
     RED.nodes.registerType("exchangeratesapi", FunctionNode, {
         credentials: {
-            apikey: {type:"text"}
+            access_key: {type:"text"}
         }
     });
 
     function exchangerateskey(n){
         RED.nodes.createNode(this, n);
-        this.apikey = n.apikey;
+        this.access_key = n.access_key;
     }
 
     RED.nodes.registerType("exchangerates-key", exchangerateskey,{
         credentials: {
-            apikey: {type:"text"}
+            access_key: {type:"text"}
         }
     });
 };

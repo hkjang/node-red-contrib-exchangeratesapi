@@ -15,6 +15,7 @@ command in your Node-RED user directory, typically `~/.node-red`
 
 ## Wrapper exchangeratesapi.com API  
 - https://exchangeratesapi.io/
+- need to Access Key
 
 ## Sample parameters
 ```js
